@@ -1,0 +1,20 @@
+class Project
+    attr_reader :title
+
+    def initialize(title)
+        @title = title
+    end
+
+    def add_backer(backer)
+        ProjectBacker.new(self, backer)
+    end
+
+    def proj_backers
+        ProjectBacker.all.select { |proj| proj.project == self}
+    end
+
+    def backers 
+        proj_backers.map { |proj| proj.backer}
+    end
+
+end
